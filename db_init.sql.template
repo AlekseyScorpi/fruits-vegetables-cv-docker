@@ -1,0 +1,9 @@
+CREATE DATABASE smart_scales_db;
+\c smart_scales_db
+
+CREATE SCHEMA smart_scales_data;
+CREATE USER smart_scales_user WITH PASSWORD '${SMART_SCALES_PASSWORD}';
+GRANT CONNECT ON DATABASE smart_scales_db TO smart_scales_user;
+GRANT USAGE ON SCHEMA smart_scales_data TO smart_scales_user;
+GRANT SELECT ON ALL TABLES IN SCHEMA smart_scales_data TO smart_scales_user;
+ALTER DEFAULT PRIVILEGES IN SCHEMA smart_scales_data GRANT SELECT ON TABLES TO smart_scales_user;
